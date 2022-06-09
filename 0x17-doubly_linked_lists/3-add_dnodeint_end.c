@@ -1,22 +1,38 @@
 #include "lists.h"
 
 /**
- * dlistint_len - Returns the number of elements in a dlistint_t list.
- * @h: The head of the dlistint_t list.
- * Return: The number of elements in the list.
- * Description: This function returns the number of elements in a dlistint_t
-*/
+ * add_dnodeint_end - Adds a new node at the end of a dlistint_t list.
+ * @head: A pointer to the head of the dlistint_t list.
+ * @n: The integer for the new node to contain.
+ *
+ * Return: If the function fails - NULL.
+ *         Otherwise - the address of the new node.
+ */
 
-size_t dlistint_len(const dlistint_t *h)
+dlistint_t *add_dnodeint_end(dlistint_t **head, const int n)
 {
-size_t i = 0;
-const dlistint_t *tmp = h;
+dlistint_t *new;
+dlistint_t *tmp;
 
-while (tmp != NULL)
+new = malloc(sizeof(dlistint_t));
+if (new == NULL)
+{
+return (NULL);
+}
+new->n = n;
+new->next = NULL;
+new->prev = NULL;
+if (*head == NULL)
+{
+*head = new;
+return (new);
+}
+tmp = *head;
+while (tmp->next != NULL)
 {
 tmp = tmp->next;
-i++;
 }
-return (i);
-
+tmp->next = new;
+new->prev = tmp;
+return (new);
 }
