@@ -2,6 +2,9 @@
 
 Making use of; creation of new libraries `gcc -Wall -fPIC -c *.c`, creating position independent code, `gcc -shared -o libdynamic.so *.o`, initialized data section `nm -D ` and compiling the main program and linking with the shared object library.
 
+## Tests :heavy_check_mark:
+
+* [tests](./tests): Folder of tests
 
 ## Tasks :page_with_curl:
 
